@@ -10,8 +10,8 @@ namespace DevSpot.Data
             var userManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
 
             await CreateUserWithRole(userManager, "admin@devspot.com", "Admin123!", Roles.Admin);
-            await CreateUserWithRole(userManager, "jobseeker@devspot.com", "JobSeeker123!", Roles.JobSeeker);
-            await CreateUserWithRole(userManager, "employer@devspot.com", "Employer123!", Roles.Employer);
+            await CreateUserWithRole(userManager, "User@devspot.com", "User123!", Roles.User);
+            await CreateUserWithRole(userManager, "RegisteredUser@devspot.com", "RegisteredUser123!", Roles.RegisteredUser);
         }
 
         private static async Task CreateUserWithRole(

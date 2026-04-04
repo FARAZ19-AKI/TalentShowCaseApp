@@ -1,5 +1,4 @@
 using DevSpot.Data;
-using DevSpot.Models;
 using DevSpot.Repositories;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +19,7 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
 }).AddRoles<IdentityRole>()
   .AddEntityFrameworkStores<ApplicationDbContext>();
 
-builder.Services.AddScoped<IRepository<JobPosting>, JobPostingRepository>();
+builder.Services.AddScoped<IRepository<Talent>, TalentRepository>();
 
 var app = builder.Build();
 
@@ -39,7 +38,7 @@ using (var scope = app.Services.CreateScope())
     UserSeeder.SeedUserAsync(services).Wait();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
@@ -50,6 +49,6 @@ app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=JobPostings}/{action=Index}/{id?}");
+    pattern: "{controller=Talent}/{action=Index}/{id?}");
 
 app.Run();

@@ -3,7 +3,7 @@
     public static class Roles
     {
         public const string Admin = "Admin";
-        public const string JobSeeker = "JobSeeker";
-        public const string Employer = "Employer";
+        public const string User = "User";
+        public const string RegisteredUser = "Registered user";
     }
 }

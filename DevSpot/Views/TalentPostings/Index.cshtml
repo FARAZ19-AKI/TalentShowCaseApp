@@ -1,0 +1,67 @@
+﻿@* @model IEnumerable<Talent>
+
+<h3>Talent List</h3>
+
+@foreach (var talent in Model)
+{
+    <div>
+        <h4>@talent.Title</h4>
+        <p>@talent.Description</p>
+    </div>
+} *@
+
+@using DevSpot.Constants;
+@model IEnumerable<Talent>
+@{
+}
+
+<h3 class="text-center m-5">Welcome to TalentShowcase</h3>
+<div class="list-group">
+    @foreach (var Talent in Model)
+    {
+        <div class="list-group-item mb-4" id="Talent-@Talent.Id">
+            <h4>@Talent.Title</h4>
+            <p>@Talent.Description</p>
+            <p><strong><video controls="controls">
+  <source src="file.mp4"  type="video/mp4" />
+  <source src="file.webm" type="video/webm" />
+  <source src="file.ogv"  type="video/ogg" />
+</video>: </strong> @Talent.Category</p>
+            <p><strong>Category: </strong>@Talent.Category</p>
+          
+
+            @if (User.IsInRole(Roles.Admin) || User.IsInRole(Roles.RegisteredUser))
+            {
+                <div>
+                    <button onclick="deleteTalent(@Talent.Id)" class="btn btn-danger btn-sm">Delete</button>
+                </div>
+            }
+
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        function deleteTalent(id){
+            if (confirm("Are you sure want to delete this Talent posting?")) {
+                
+                // Url
+                // Type
+                // Success -> Visually remove jobPosting li
+                // Error -> Error Message
+
+                $.ajax({
+                    url: "@Url.Action("Delete", "Talent")/" + id, // endpoint -> .../Jobpostings/delete/7
+                    type: "delete",
+                    success: function (result) {
+                        $("#Talent" + id).remove();
+                    },
+                    error: function (err) {
+                        alert("An Error Occuered.");
+                    }
+                });
+            }
+        }
+    </script>
+}

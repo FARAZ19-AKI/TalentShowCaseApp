@@ -14,14 +14,14 @@ namespace DevSpot.Data
                 await roleManager.CreateAsync(new IdentityRole(Roles.Admin));
             }
 
-            if (!await roleManager.RoleExistsAsync(Roles.JobSeeker))
+            if (!await roleManager.RoleExistsAsync(Roles.User))
             {
-                await roleManager.CreateAsync(new IdentityRole(Roles.JobSeeker));
+                await roleManager.CreateAsync(new IdentityRole(Roles.User));
             }
 
-            if (!await roleManager.RoleExistsAsync(Roles.Employer))
+            if (!await roleManager.RoleExistsAsync(Roles.RegisteredUser))
             {
-                await roleManager.CreateAsync(new IdentityRole(Roles.Employer));
+                await roleManager.CreateAsync(new IdentityRole(Roles.RegisteredUser));
             }
         }
     }

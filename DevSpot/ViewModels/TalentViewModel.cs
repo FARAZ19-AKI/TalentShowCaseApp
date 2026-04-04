@@ -2,7 +2,7 @@
 
 namespace DevSpot.ViewModels
 {
-    public class JobPostingViewModel
+    public class TalentViewModel
     {
         [Required]
         public string Title { get; set; }
@@ -11,9 +11,9 @@ namespace DevSpot.ViewModels
         public string Description { get; set; }
 
         [Required]
-        public string Company { get; set; }
+        public string Video_url { get; set; }
 
         [Required]
-        public string Location { get; set; }
+        public string Category { get; set; }
     }
 }
