@@ -49,6 +49,6 @@ app.MapRazorPages();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Talent}/{action=Index}/{id?}");
+    pattern: "{controller=TalentPosting}/{action=Index}/{id?}");
 
 app.Run();
